@@ -1,66 +1,23 @@
 version: "3.4"
 services:
 
-  # application service
-  app_ml:
-    container_name: skill_app_diplom
-    image: app_diplom
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - logs:/usr/local/app_ml/logs
-      - models:/usr/local/app_ml/models
-      - dataset:/usr/local/app_ml/dataset
-    restart: always
-    ports:
-      - 8015:8015
-    networks:
-      - custom
-#  # prometheus
-#  prometheus:
-#    image: prom/prometheus:latest
-#    container_name: skill_prometheus_diplom
-#    links:
-#      - pushgateway
-#    volumes:
-#      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-#      - prometheus_data:/prometheus
-#    command:
-#      - '--config.file=/etc/prometheus/prometheus.yml'
-#    restart: always
-#    networks:
-#      - custom
-#    expose:
-#      - 9090
-#    ports:
-#      - 9090:9090
-#  pushgateway:
-#    image: bitnami/pushgateway:latest
-#    container_name: skill_pushgateway_diplom
-#    restart: always
-#    expose:
-#      - 9091
-#    ports:
-#      - 9091:9091
-#    networks:
-#      - custom
-#  # grafana
-#  grafana:
-#    image: grafana/grafana:latest
-#    container_name: grafana
-#    volumes:
-#      - grafana_data:/var/lib/grafana
-#      - ./volumes/grafana/provisioning:/etc/grafana/provisioning
-#    environment:
-#      - GF_SECURITY_ADMIN_USER=admin
-#      - GF_SECURITY_ADMIN_PASSWORD=admin
-#      - GF_USERS_ALLOW_SIGN_UP=false
-#    restart: unless-stopped
-#    ports:
-#      - 3000:3000
-#    networks:
-#      - custom
+# application service
+app_ml:
+  container_name: skill_app_diplom
+  image: app_diplom
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - logs:/usr/local/app_ml/logs
+    - models:/usr/local/app_ml/models
+    - dataset:/usr/local/app_ml/dataset
+  restart: always
+  ports:
+    - 8015:8015
+  networks:
+    - custom
+
 volumes:
   logs: { }
   models: { }
